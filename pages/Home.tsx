@@ -1,14 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { PHONE_HREF, PHONE_NUMBER, ADDRESS, MAPS_LINK, WAZE_LINK } from '../constants';
+import { PHONE_HREF, ADDRESS, MAPS_LINK, WAZE_LINK, PHONE_NUMBER } from '../constants';
 import { Link, useParams } from 'react-router-dom';
 import { Home as HomeIcon, Tent, MapPin, Calendar, Check } from 'lucide-react';
 import clsx from 'clsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Home: React.FC = () => {
+interface HomeProps {
+  isPreloading?: boolean;
+}
+
+const Home: React.FC<HomeProps> = ({ isPreloading = false }) => {
   const { lang } = useParams();
   const currentLang = lang || 'lv';
   const heroRef = useRef<HTMLDivElement>(null);
@@ -16,6 +20,9 @@ const Home: React.FC = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // If the preloader is still active, do not start animations yet.
+    if (isPreloading) return;
+
     const ctx = gsap.context(() => {
       // Hero Animation - Smoother
       gsap.from(".reveal-hero", {
@@ -55,7 +62,7 @@ const Home: React.FC = () => {
 
     }, [heroRef, featuresRef]);
     return () => ctx.revert();
-  }, []);
+  }, [isPreloading]); // Re-run effect when preloading finishes
 
   return (
     <main className="flex-1 w-full overflow-hidden">

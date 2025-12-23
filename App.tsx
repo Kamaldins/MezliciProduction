@@ -78,7 +78,7 @@ const AppContent: React.FC = () => {
           <Route path="/" element={<Navigate to="/lv" replace />} />
           
           {/* i18n Routes */}
-          <Route path="/:lang" element={<Home />} />
+          <Route path="/:lang" element={<Home isPreloading={loading} />} />
           <Route path="/:lang/sauna" element={<Sauna />} />
           <Route path="/:lang/gallery" element={<Gallery />} />
           <Route path="/:lang/policy" element={<Policy />} />
