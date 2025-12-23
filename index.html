@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Mežlīči | Atpūta pie Daugavas</title>
+    <meta name="description" content="Miers. Daba. Daugava. Atgūsti spēkus un relaksējies klusā meža ielokā." />
+    
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: '#FDFCF8',
+              charcoal: {
+                800: '#3D3C3A',
+                900: '#2C2B29',
+              },
+              taupe: { 
+                500: '#9A8C73',
+                600: '#857861'
+              },
+              stone: '#EBE9E4'
+            },
+            fontFamily: {
+              serif: ['"Lora"', 'serif'],
+              sans: ['"Inter"', 'sans-serif'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.8s ease-out forwards',
+              'slide-up': 'slideUp 0.8s ease-out forwards',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Layout Stability */
+      html {
+        scrollbar-gutter: stable;
+      }
+
+      /* Lenis Recommended Styles */
+      html.lenis, html.lenis body { height: auto; }
+      .lenis.lenis-smooth { scroll-behavior: auto !important; }
+      .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+      .lenis.lenis-stopped { overflow: hidden; }
+      .lenis.lenis-scrolling iframe { pointer-events: none; }
+      
+      /* Utilities */
+      .text-balance { text-wrap: balance; }
+      .hero-text-shadow { text-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+      
+      /* Custom Scrollbar - Improved */
+      ::-webkit-scrollbar { 
+        width: 6px; 
+      }
+      ::-webkit-scrollbar-track { 
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb { 
+        background: rgba(154, 140, 115, 0.5); /* Taupe 50% */
+        border-radius: 10px; 
+        transition: background 0.3s; 
+      }
+      ::-webkit-scrollbar-thumb:hover { 
+        background: rgba(154, 140, 115, 0.8); /* Taupe 80% */
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
+    "@studio-freight/lenis": "https://esm.sh/@studio-freight/lenis@^1.0.42",
+    "gsap/": "https://esm.sh/gsap@^3.14.2/",
+    "gsap": "https://esm.sh/gsap@^3.14.2",
+    "clsx": "https://esm.sh/clsx@^2.1.1"
+  }
+}
+</script>
+</head>
+  <body class="bg-cream text-charcoal-900 font-sans antialiased selection:bg-taupe-500 selection:text-white">
+    <div id="root"></div>
+  </body>
+</html>
