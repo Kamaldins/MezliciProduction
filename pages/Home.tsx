@@ -3,7 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PHONE_HREF, ADDRESS, MAPS_LINK, WAZE_LINK, PHONE_NUMBER } from '../constants';
 import { Link, useParams } from 'react-router-dom';
-import { Home as HomeIcon, Tent, MapPin, Calendar, Check } from 'lucide-react';
+import { Home as HomeIcon, Tent, MapPin, Calendar, Check, Phone } from 'lucide-react';
+import ExternalLink from '../components/ExternalLink';
 import clsx from 'clsx';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -94,8 +95,12 @@ const Home: React.FC<HomeProps> = ({ isPreloading = false }) => {
           </p>
           <div className="mt-14 reveal-hero">
             <a 
-              href={PHONE_HREF} 
+              href="#contact" 
               className="inline-block bg-white text-charcoal-900 px-10 py-5 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:bg-taupe-500 hover:text-white transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               Rezervēt Atpūtu
             </a>
@@ -198,8 +203,12 @@ const Home: React.FC<HomeProps> = ({ isPreloading = false }) => {
               </h2>
             </div>
             <div className="flex gap-4">
-              <MapButton href={WAZE_LINK} label="Waze" />
-              <MapButton href={MAPS_LINK} label="Google Maps" />
+              <ExternalLink href={WAZE_LINK} className="px-6 py-3 bg-stone/30 rounded-full text-xs font-bold uppercase tracking-widest text-charcoal-900 hover:bg-taupe-500 hover:text-white transition-colors flex items-center gap-2">
+                Waze
+              </ExternalLink>
+              <ExternalLink href={MAPS_LINK} className="px-6 py-3 bg-stone/30 rounded-full text-xs font-bold uppercase tracking-widest text-charcoal-900 hover:bg-taupe-500 hover:text-white transition-colors flex items-center gap-2">
+                Google Maps
+              </ExternalLink>
             </div>
           </div>
 
@@ -219,7 +228,7 @@ const Home: React.FC<HomeProps> = ({ isPreloading = false }) => {
       </section>
 
       {/* --- CONTACT & CALENDAR --- */}
-      <section className="py-32 px-6 bg-cream border-t border-stone relative overflow-hidden">
+      <section id="contact" className="py-32 px-6 bg-cream border-t border-stone relative overflow-hidden">
         {/* Decorative background element */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-taupe-500/5 rounded-full blur-3xl -z-0" />
 
@@ -229,16 +238,25 @@ const Home: React.FC<HomeProps> = ({ isPreloading = false }) => {
             "Mēs palīdzēsim rezervēt perfektu brīvdienu vietu."
           </p>
 
-          {/* Liquid Glass Contact Card */}
-          <div className="bg-white/60 backdrop-blur-xl p-12 shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] rounded-3xl max-w-xl mx-auto mb-16 border border-white/50 hover:border-taupe-500/30 transition-colors duration-300">
-            <p className="text-xs font-bold text-charcoal-900/40 uppercase tracking-widest mb-4">
-              Saimnieks Andrejs
+          {/* Improved Contact Card with High Visibility */}
+          <div className="bg-white p-12 shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] rounded-3xl max-w-xl mx-auto mb-16 border-2 border-taupe-500/20 hover:border-taupe-500 transition-colors duration-300 group transform hover:-translate-y-1">
+            <p className="text-xs font-bold text-charcoal-900/60 uppercase tracking-[0.2em] mb-6">
+              Zvanīt Saimniekam Andrejam
             </p>
+            
             <a 
               href={PHONE_HREF} 
-              className="font-serif text-4xl md:text-5xl text-charcoal-900 hover:text-taupe-600 transition-colors block"
+              className="flex flex-col items-center gap-4 group-hover:scale-105 transition-transform duration-300"
             >
-              {PHONE_NUMBER}
+              <div className="w-16 h-16 bg-taupe-500 text-white rounded-full flex items-center justify-center shadow-lg group-hover:bg-charcoal-900 transition-colors">
+                <Phone size={32} />
+              </div>
+              <span className="font-serif text-5xl md:text-6xl font-bold text-charcoal-900 group-hover:text-taupe-600 transition-colors tracking-tight">
+                {PHONE_NUMBER}
+              </span>
+              <span className="text-sm font-bold text-taupe-500 uppercase tracking-widest mt-2 border-b border-taupe-500 pb-1 group-hover:text-charcoal-900 group-hover:border-charcoal-900">
+                Piezvanīt Tagad
+              </span>
             </a>
           </div>
           
@@ -277,17 +295,6 @@ const FeatureCard: React.FC<{ icon: React.ReactNode, title: string, items: strin
         ))}
      </ul>
   </div>
-);
-
-const MapButton: React.FC<{ href: string, label: string }> = ({ href, label }) => (
-  <a 
-    href={href} 
-    target="_blank" 
-    rel="noreferrer"
-    className="px-6 py-3 bg-stone/30 rounded-full text-xs font-bold uppercase tracking-widest text-charcoal-900 hover:bg-taupe-500 hover:text-white transition-colors flex items-center gap-2"
-  >
-    {label}
-  </a>
 );
 
 export default Home;

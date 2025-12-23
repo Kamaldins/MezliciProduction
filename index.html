@@ -3,15 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Mežlīči | Atpūta pie Daugavas</title>
-    <meta name="description" content="Miers. Daba. Daugava. Atgūsti spēkus un relaksējies klusā meža ielokā." />
+    
+    <!-- Primary Meta Tags -->
+    <title>Mežlīči | Atpūta pie Daugavas | Brīvdienu Māja & Pirts</title>
+    <meta name="title" content="Mežlīči | Atpūta pie Daugavas | Brīvdienu Māja & Pirts">
+    <meta name="description" content="Izbaudiet mieru un dabu 'Mežlīčos'. Privāta brīvdienu māja ar pirti, kublu un tiešu piekļuvi Daugavai. Ideāla vieta ģimenēm un draugu kompānijām līdz 10 personām." />
+    <meta name="keywords" content="brīvdienu māja, pirts, atpūta pie daugavas, viesu nams, kempings, makšķerēšana, kubls, pirts rituāli, ķegums, tome, latvija, mežlīči" />
+    <meta name="author" content="Mežlīči">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mezlici.lv/">
+    <meta property="og:title" content="Mežlīči | Miers. Daba. Daugava.">
+    <meta property="og:description" content="Atgūsti spēkus un relaksējies klusā meža ielokā. Brīvdienu māja ar pirti un kublu Daugavas krastā.">
+    <meta property="og:image" content="https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg">
+    <meta property="og:locale" content="lv_LV">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mezlici.lv/">
+    <meta property="twitter:title" content="Mežlīči | Atpūta pie Daugavas">
+    <meta property="twitter:description" content="Privāta brīvdienu māja ar pirti un kublu Daugavas krastā.">
+    <meta property="twitter:image" content="https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg">
     
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": "Mežlīči",
+      "image": "https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg",
+      "@id": "https://mezlici.lv",
+      "url": "https://mezlici.lv",
+      "telephone": "+37129294621",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Mežlīči",
+        "addressLocality": "Tome",
+        "addressRegion": "Ķeguma pagasts",
+        "addressCountry": "LV"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 56.722276,
+        "longitude": 24.723883
+      },
+      "priceRange": "$$",
+      "description": "Brīvdienu māja ar pirti un kublu pie Daugavas.",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pirts",
+          "value": "True"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Kubls",
+          "value": "True"
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Peldvieta",
+          "value": "True"
+        }
+      ]
+    }
+    </script>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -55,8 +120,19 @@
     </script>
     <style>
       /* Layout Stability */
-      html {
+      html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #FDFCF8; /* Ensure bg color is set immediately */
         scrollbar-gutter: stable;
+      }
+
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
 
       /* Lenis Recommended Styles */
@@ -104,7 +180,7 @@
 }
 </script>
 </head>
-  <body class="bg-cream text-charcoal-900 font-sans antialiased selection:bg-taupe-500 selection:text-white">
+  <body class="text-charcoal-900 font-sans antialiased selection:bg-taupe-500 selection:text-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
