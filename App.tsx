@@ -7,6 +7,7 @@ import Header from './components/Header';
 import MenuOverlay from './components/MenuOverlay';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
+import BackToTop from './components/BackToTop';
 
 // Pages
 import Home from './pages/Home';
@@ -85,6 +86,7 @@ const AppContent: React.FC = () => {
         </Routes>
 
         <Footer />
+        <BackToTop />
       </div>
     </>
   );

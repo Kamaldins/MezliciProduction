@@ -212,7 +212,7 @@ const Home: React.FC<HomeProps> = ({ isPreloading = false }) => {
             </div>
           </div>
 
-          <div className="h-[400px] md:h-[550px] w-full relative overflow-hidden rounded-3xl shadow-lg border border-stone/50 group">
+          <div className="h-[400px] md:h-[550px] w-full relative overflow-hidden rounded-3xl shadow-lg border border-stone/50 group my-8 md:my-0">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2166.002996924856!2d24.7222041!3d56.7222882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTbCsDQzJzIwLjIiTiAyNMKwNDMnMjYuMCJF!5e0!3m2!1sen!2slv!4v1625680000000!5m2!1sen!2slv&t=h" 
               width="100%" 
@@ -238,26 +238,27 @@ const Home: React.FC<HomeProps> = ({ isPreloading = false }) => {
             "Mēs palīdzēsim rezervēt perfektu brīvdienu vietu."
           </p>
 
-          {/* Improved Contact Card with High Visibility */}
-          <div className="bg-white p-12 shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] rounded-3xl max-w-xl mx-auto mb-16 border-2 border-taupe-500/20 hover:border-taupe-500 transition-colors duration-300 group transform hover:-translate-y-1">
-            <p className="text-xs font-bold text-charcoal-900/60 uppercase tracking-[0.2em] mb-6">
-              Zvanīt Saimniekam Andrejam
+          {/* Improved Contact Card with High Visibility - Redesigned Button */}
+          <div className="bg-white p-8 md:p-12 shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] rounded-3xl max-w-xl mx-auto mb-16 border-2 border-taupe-500/20 hover:border-taupe-500 transition-colors duration-300 group">
+            <p className="text-xs font-bold text-charcoal-900/60 uppercase tracking-[0.2em] mb-8">
+              Sazināties ar Saimnieku Andreju
             </p>
             
             <a 
               href={PHONE_HREF} 
-              className="flex flex-col items-center gap-4 group-hover:scale-105 transition-transform duration-300"
+              className="flex flex-col md:flex-row items-center justify-center gap-6 group-hover:opacity-90 transition-opacity"
             >
-              <div className="w-16 h-16 bg-taupe-500 text-white rounded-full flex items-center justify-center shadow-lg group-hover:bg-charcoal-900 transition-colors">
-                <Phone size={32} />
+              {/* Professional Tactile Button */}
+              <div className="w-full md:w-auto bg-charcoal-900 text-white px-8 py-4 rounded-full flex items-center justify-center gap-4 shadow-xl hover:bg-taupe-500 transition-all duration-300 transform hover:-translate-y-1 active:scale-95">
+                <Phone size={24} className="animate-pulse" />
+                <span className="font-serif text-2xl md:text-3xl font-bold tracking-wide">
+                  {PHONE_NUMBER}
+                </span>
               </div>
-              <span className="font-serif text-5xl md:text-6xl font-bold text-charcoal-900 group-hover:text-taupe-600 transition-colors tracking-tight">
-                {PHONE_NUMBER}
-              </span>
-              <span className="text-sm font-bold text-taupe-500 uppercase tracking-widest mt-2 border-b border-taupe-500 pb-1 group-hover:text-charcoal-900 group-hover:border-charcoal-900">
-                Piezvanīt Tagad
-              </span>
             </a>
+            <p className="mt-6 text-charcoal-800/40 text-xs uppercase tracking-widest">
+                Zvanīt jebkurā laikā
+            </p>
           </div>
           
           <div className="bg-white p-4 md:p-8 shadow-lg rounded-2xl border border-stone overflow-hidden">

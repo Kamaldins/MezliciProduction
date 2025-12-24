@@ -23,17 +23,32 @@ const Policy: React.FC = () => {
           
           <PolicySection 
             title="1. Vispārīgie Noteikumi" 
-            content="Brīvdienu māja 'Mežlīči' apņemas ievērot Vispārīgo datu aizsardzības regulu (GDPR). Mēs apkopojam tikai to informāciju, kas nepieciešama rezervācijas nodrošināšanai."
+            content="Brīvdienu māja 'Mežlīči' apņemas ievērot Vispārīgo datu aizsardzības regulu (GDPR) un Latvijas Republikas likumdošanu. Mēs apkopojam tikai to informāciju, kas nepieciešama rezervācijas nodrošināšanai un pakalpojuma sniegšanai."
           />
 
           <PolicySection 
-            title="2. Sīkdatnes" 
-            content="Mēs izmantojam tikai tehniskās sīkdatnes, kas nepieciešamas mājaslapas korektai darbībai. Analītiskās sīkdatnes (ja tiek izmantotas) ir anonimizētas un kalpo tikai vietnes veiktspējas uzlabošanai."
+            title="2. Datu Vākšana un Apstrāde" 
+            content="Mēs varam apstrādāt šādus personas datus: vārds, uzvārds, tālruņa numurs un citi dati, kurus jūs sniedzat saziņas laikā, lai veiktu rezervāciju. Šie dati tiek izmantoti tikai, lai sazinātos ar jums par pakalpojuma detaļām."
           />
 
           <PolicySection 
-            title="3. Rezervācijas Dati" 
-            content="Jūsu tālruņa numurs un vārds, kas tiek izmantots saziņai un rezervācijai, tiek glabāts droši un netiek nodots trešajām pusēm mārketinga nolūkos."
+            title="3. Sīkdatnes (Cookies)" 
+            content="Mēs izmantojam tikai tehniskās sīkdatnes, kas nepieciešamas mājaslapas korektai darbībai un navigācijai. Mēs neizmantojam invazīvas izsekošanas tehnoloģijas vai trešo pušu mārketinga sīkdatnes bez jūsu piekrišanas."
+          />
+
+           <PolicySection 
+            title="4. Datu Nodošana Trešajām Pusēm" 
+            content="Jūsu personas dati netiek nodoti trešajām pusēm, izņemot gadījumus, ja to pieprasa tiesībsargājošās iestādes saskaņā ar spēkā esošajiem tiesību aktiem."
+          />
+
+           <PolicySection 
+            title="5. Datu Glabāšana un Drošība" 
+            content="Mēs veicam saprātīgus drošības pasākumus, lai aizsargātu jūsu datus no nesankcionētas piekļuves. Dati tiek glabāti tikai tik ilgi, cik tas ir nepieciešams pakalpojuma sniegšanai vai likumā noteikto prasību izpildei."
+          />
+
+          <PolicySection 
+            title="6. Jūsu Tiesības" 
+            content="Jums ir tiesības pieprasīt informāciju par jūsu personas datiem, kas ir mūsu rīcībā, kā arī pieprasīt to labošanu vai dzēšanu. Lai izmantotu šīs tiesības, lūdzu, sazinieties ar mums, izmantojot norādīto kontaktinformāciju."
           />
 
           <div className="pt-8 mt-12 border-t border-charcoal-900/10">

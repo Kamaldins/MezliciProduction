@@ -73,10 +73,25 @@ const Footer: React.FC = () => {
             href="https://www.kamaltek.com/en/projects/mezlici-holiday-home" 
             className="block group text-left"
           >
-            <span className="text-2xl font-bold text-cream group-hover:text-taupe-500 transition-colors">
-              Kamaltek
-            </span>
-            <span className="block text-xs text-cream/40 mt-1 group-hover:text-white transition-colors">
+            <div className="flex items-center gap-3">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="2 3 18 18"
+                    fill="none"
+                    stroke="#299947"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-6 h-6"
+                >
+                    <path d="M14 19l-7-7 7-7" />
+                    <path d="M8.5 17l-5-5 5-5" />
+                </svg>
+                <span className="text-2xl font-bold text-cream group-hover:text-taupe-500 transition-colors">
+                Kamaltek
+                </span>
+            </div>
+            <span className="block text-xs text-cream/40 mt-1 group-hover:text-white transition-colors pl-9">
               Apskatīt projektu →
             </span>
           </ExternalLink>
