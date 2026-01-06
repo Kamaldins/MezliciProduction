@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'phosphor-react';
 import clsx from 'clsx';
 
 const BackToTop: React.FC = () => {

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { PHONE_HREF, PHONE_NUMBER } from '../constants';
 import clsx from 'clsx';
+import { List, X } from 'phosphor-react';
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -11,8 +12,10 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const { lang } = useParams();
-  const currentLang = lang || 'lv';
+  
+  // Robust detection
+  const pathLang = location.pathname.split('/')[1];
+  const currentLang = ['en', 'ru'].includes(pathLang) ? pathLang : 'lv';
   
   // Check if we are on the home page
   const isHome = location.pathname === `/${currentLang}` || location.pathname === `/${currentLang}/`;
@@ -35,9 +38,9 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
   // Visual Logic
   const shouldUseDarkTheme = isMenuOpen || !isHome || scrolled;
 
-  const textColorClass = shouldUseDarkTheme ? 'text-charcoal-900' : 'text-white';
-  const burgerColorClass = shouldUseDarkTheme ? 'bg-charcoal-900' : 'bg-white';
-  const phoneColorClass = shouldUseDarkTheme ? 'text-charcoal-800' : 'text-white';
+  const textColorClass = shouldUseDarkTheme ? 'text-charcoal-900 dark:text-white' : 'text-white';
+  const burgerColorClass = shouldUseDarkTheme ? 'text-charcoal-900 dark:text-white' : 'text-white';
+  const phoneColorClass = shouldUseDarkTheme ? 'text-charcoal-800 dark:text-white/80' : 'text-white';
 
   return (
     <header 
@@ -53,7 +56,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
         className={clsx(
             "max-w-[1400px] mx-auto flex justify-between items-center rounded-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
             scrolled 
-                ? "bg-white/20 backdrop-blur-xl border border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] px-6 py-3" 
+                ? "bg-white/20 dark:bg-mantle/50 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] px-6 py-3" 
                 : "bg-transparent border border-transparent px-0"
         )}
       >
@@ -82,30 +85,13 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
           
           <button 
             onClick={toggleMenu}
-            className="relative z-[70] w-10 h-10 flex flex-col justify-center items-end gap-[6px] group cursor-pointer border-none bg-transparent outline-none"
+            className={clsx(
+                "relative z-[70] w-10 h-10 flex items-center justify-center cursor-pointer border-none bg-transparent outline-none transition-colors",
+                burgerColorClass
+            )}
             aria-label="Toggle Menu"
           >
-            <span 
-              className={clsx(
-                "w-8 h-[2px] transition-all duration-500 origin-center group-hover:bg-taupe-500",
-                burgerColorClass,
-                isMenuOpen && "translate-y-[8px] rotate-45 !bg-charcoal-900"
-              )} 
-            />
-            <span 
-              className={clsx(
-                "w-5 h-[2px] transition-all duration-500 group-hover:bg-taupe-500",
-                burgerColorClass,
-                isMenuOpen && "opacity-0 scale-0"
-              )} 
-            />
-            <span 
-              className={clsx(
-                "w-8 h-[2px] transition-all duration-500 origin-center group-hover:bg-taupe-500",
-                burgerColorClass,
-                isMenuOpen && "-translate-y-[8px] -rotate-45 !bg-charcoal-900"
-              )} 
-            />
+            {isMenuOpen ? <X size={32} weight="light" /> : <List size={32} weight="light" />}
           </button>
         </div>
       </div>

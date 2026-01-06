@@ -1,168 +1,80 @@
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="lv" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     
-    <!-- Primary Meta Tags -->
-    <title>Mežlīči | Atpūta pie Daugavas | Brīvdienu Māja & Pirts</title>
-    <meta name="title" content="Mežlīči | Atpūta pie Daugavas | Brīvdienu Māja & Pirts">
-    <meta name="description" content="Izbaudiet mieru un dabu 'Mežlīčos'. Privāta brīvdienu māja ar pirti, kublu un tiešu piekļuvi Daugavai. Ideāla vieta ģimenēm un draugu kompānijām līdz 10 personām." />
-    <meta name="keywords" content="brīvdienu māja, pirts, atpūta pie daugavas, viesu nams, kempings, makšķerēšana, kubls, pirts rituāli, ķegums, tome, latvija, mežlīči" />
-    <meta name="author" content="Mežlīči">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mezlici.lv/">
-    <meta property="og:title" content="Mežlīči | Miers. Daba. Daugava.">
-    <meta property="og:description" content="Atgūsti spēkus un relaksējies klusā meža ielokā. Brīvdienu māja ar pirti un kublu Daugavas krastā.">
-    <meta property="og:image" content="https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg">
-    <meta property="og:locale" content="lv_LV">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://mezlici.lv/">
-    <meta property="twitter:title" content="Mežlīči | Atpūta pie Daugavas">
-    <meta property="twitter:description" content="Privāta brīvdienu māja ar pirti un kublu Daugavas krastā.">
-    <meta property="twitter:image" content="https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg">
+    <title>Mežlīči | Atpūta pie Daugavas</title>
     
-    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg">
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LodgingBusiness",
-      "name": "Mežlīči",
-      "image": "https://i.ibb.co/mVH0z4S8/Whats-App-Image-2025-10-25-at-16-40-18.jpg",
-      "@id": "https://mezlici.lv",
-      "url": "https://mezlici.lv",
-      "telephone": "+37129294621",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Mežlīči",
-        "addressLocality": "Tome",
-        "addressRegion": "Ķeguma pagasts",
-        "addressCountry": "LV"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 56.722276,
-        "longitude": 24.723883
-      },
-      "priceRange": "$$",
-      "description": "Brīvdienu māja ar pirti un kublu pie Daugavas.",
-      "amenityFeature": [
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "Pirts",
-          "value": "True"
-        },
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "Kubls",
-          "value": "True"
-        },
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "Peldvieta",
-          "value": "True"
-        }
-      ]
-    }
-    </script>
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             colors: {
-              cream: '#FDFCF8',
+              cream: {
+                DEFAULT: '#FDFCF8',
+                dark: '#1e1e2e' // Catppuccin Mocha Base
+              },
               charcoal: {
                 800: '#3D3C3A',
-                900: '#2C2B29',
+                900: '#1A1A1A', 
               },
               taupe: { 
                 500: '#9A8C73',
                 600: '#857861'
               },
-              stone: '#EBE9E4'
+              stone: {
+                DEFAULT: '#EBE9E4',
+                dark: '#313244' // Catppuccin Mocha Surface0 (Cards)
+              },
+              mantle: {
+                DEFAULT: '#181825' // Catppuccin Mocha Mantle (Footer/Header/Deep)
+              }
             },
             fontFamily: {
               serif: ['"Lora"', 'serif'],
               sans: ['"Inter"', 'sans-serif'],
             },
-            animation: {
-              'fade-in': 'fadeIn 0.8s ease-out forwards',
-              'slide-up': 'slideUp 0.8s ease-out forwards',
-            },
-            keyframes: {
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' },
-              },
-              slideUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              }
+            transitionDuration: {
+              '400': '400ms',
             }
           }
         }
       }
     </script>
     <style>
-      /* Layout Stability */
-      html, body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        background-color: #FDFCF8; /* Ensure bg color is set immediately */
-        scrollbar-gutter: stable;
+      html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+      
+      /* Smooth background transition for theme switching */
+      body { 
+        background-color: #FDFCF8; 
+        transition: background-color 0.4s ease, color 0.4s ease;
+      }
+      .dark body { 
+        background-color: #1e1e2e; 
+        color: #cdd6f4; /* Catppuccin Text */
       }
 
-      #root {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Lenis Recommended Styles */
+      #root { min-height: 100vh; display: flex; flex-direction: column; }
+      
+      .hero-text-shadow { text-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+      
+      /* CSS fallback: Ensure elements are visible if JS fails */
+      .reveal-text { opacity: 1; transform: none; }
+      
+      /* Lenis smooth scroll */
       html.lenis, html.lenis body { height: auto; }
       .lenis.lenis-smooth { scroll-behavior: auto !important; }
       .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
       .lenis.lenis-stopped { overflow: hidden; }
-      .lenis.lenis-scrolling iframe { pointer-events: none; }
-      
-      /* Utilities */
-      .text-balance { text-wrap: balance; }
-      .hero-text-shadow { text-shadow: 0 4px 24px rgba(0,0,0,0.4); }
-      
-      /* Custom Scrollbar - Improved */
-      ::-webkit-scrollbar { 
-        width: 6px; 
-      }
-      ::-webkit-scrollbar-track { 
-        background: transparent; 
-      }
-      ::-webkit-scrollbar-thumb { 
-        background: rgba(154, 140, 115, 0.5); /* Taupe 50% */
-        border-radius: 10px; 
-        transition: background 0.3s; 
-      }
-      ::-webkit-scrollbar-thumb:hover { 
-        background: rgba(154, 140, 115, 0.8); /* Taupe 80% */
-      }
     </style>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@18.2.0",
@@ -170,7 +82,7 @@
     "react-dom": "https://esm.sh/react-dom@18.2.0",
     "react-dom/": "https://esm.sh/react-dom@18.2.0/",
     "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?external=react,react-dom",
-    "lucide-react": "https://esm.sh/lucide-react@0.358.0?external=react,react-dom",
+    "phosphor-react": "https://esm.sh/phosphor-react@1.4.1?external=react,react-dom",
     "@studio-freight/lenis": "https://esm.sh/@studio-freight/lenis@1.0.42",
     "gsap": "https://esm.sh/gsap@3.12.5",
     "gsap/ScrollTrigger": "https://esm.sh/gsap@3.12.5/ScrollTrigger",
@@ -179,8 +91,8 @@
   }
 }
 </script>
-</head>
-  <body class="text-charcoal-900 font-sans antialiased selection:bg-taupe-500 selection:text-white">
+  </head>
+  <body class="text-charcoal-900 font-sans antialiased selection:bg-taupe-500 selection:text-white dark:text-gray-100">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

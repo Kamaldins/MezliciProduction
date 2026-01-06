@@ -1,48 +1,20 @@
-# Mežlīči — Holiday Home Website
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-This repository contains the open‑source codebase for the Mežlīči holiday home website, available at https://mezlici.lv.  
-The project is developed and maintained by Kamaltek.
+# Run and deploy your AI Studio app
 
-Project page: https://www.kamaltek.com/en/projects/mezlici-holiday-home
+This contains everything you need to run your app locally.
 
----
+View your app in AI Studio: https://ai.studio/apps/drive/10z6hBbFvLpiGOmJJywjFI64_n-D1JO9N
 
-## Overview
+## Run Locally
 
-Mežlīči is a quiet forest retreat located by the Daugava River.  
-The website provides visitors with clear information, an image gallery, and a custom booking calendar.
+**Prerequisites:**  Node.js
 
-This codebase is designed to be simple, lightweight, and easy to adapt for similar accommodation or booking‑focused projects.
 
----
-
-## Tech Stack
-
-- Vite  
-- React  
-- TypeScript  
-- Tailwind CSS  
-- Custom booking calendar  
-- Responsive layout  
-- Optimized images and content structure
-
----
-
-## Features
-
-- Clean, minimal design  
-- Fast and lightweight frontend  
-- Mobile‑first layout  
-- Image gallery  
-- Booking calendar with availability view  
-- Straightforward information architecture
-
----
-
-## Installation
-
-```bash
-git clone https://github.com/<your-username>/MezliciProduction
-cd MezliciProduction
-npm install
-npm run dev
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

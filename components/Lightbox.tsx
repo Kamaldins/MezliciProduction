@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { GalleryImage } from '../types';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, CaretLeft, CaretRight } from 'phosphor-react';
 import clsx from 'clsx';
 
 interface LightboxProps {
@@ -58,13 +58,13 @@ const Lightbox: React.FC<LightboxProps> = ({
           onClick={(e) => { e.stopPropagation(); onPrev(); }}
           className="pointer-events-auto w-14 h-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all text-white border border-white/10 backdrop-blur-md shadow-xl hover:scale-110 active:scale-95"
         >
-          <ChevronLeft size={24} />
+          <CaretLeft size={24} />
         </button>
         <button 
           onClick={(e) => { e.stopPropagation(); onNext(); }}
           className="pointer-events-auto w-14 h-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all text-white border border-white/10 backdrop-blur-md shadow-xl hover:scale-110 active:scale-95"
         >
-          <ChevronRight size={24} />
+          <CaretRight size={24} />
         </button>
       </div>
 

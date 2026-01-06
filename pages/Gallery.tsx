@@ -2,13 +2,31 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Lightbox from '../components/Lightbox';
 import { GALLERY_IMAGES } from '../constants';
-import { GalleryImage } from '../types';
+import SEO from '../components/SEO';
 
 const Gallery: React.FC = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { lang } = useParams();
   const currentLang = lang || 'lv';
+
+  const t = {
+    lv: { title: 'Galerija', back: 'Atgriezties', view: 'Apskatīt' },
+    en: { title: 'Gallery', back: 'Return', view: 'View' },
+    ru: { title: 'Галерея', back: 'Вернуться', view: 'Смотреть' }
+  }[currentLang as 'lv' | 'en' | 'ru'] || { title: 'Galerija', back: 'Atgriezties', view: 'Apskatīt' };
+
+  const seoKeywords = {
+    lv: "galerija, foto, interjers, daba, atpūtas vieta, bildes, brīvdienu māja foto",
+    en: "gallery, photos, interior, nature, rest place, pictures, holiday home photos",
+    ru: "галерея, фото, интерьер, природа, место отдыха, картинки, фото дома отдыха"
+  }[currentLang as 'lv'|'en'|'ru'] || "galerija";
+
+  const seoDesc = {
+    lv: "Ieskats Mežlīču brīvdienu mājā un apkārtnē. Apskatiet mūsu interjeru un dabas ainavas.",
+    en: "A glimpse into Mežlīči holiday home and surroundings. View our interior and nature landscapes.",
+    ru: "Взгляд на дом отдыха Mežlīči и окрестности. Посмотрите наш интерьер и природные пейзажи."
+  }[currentLang as 'lv'|'en'|'ru'] || "Galerija";
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
@@ -25,15 +43,21 @@ const Gallery: React.FC = () => {
 
   return (
     <>
-      <div className="pt-32 px-6 pb-24 min-h-screen bg-cream animate-fade-in">
+      <SEO 
+        title={`${t.title} | Mežlīči`}
+        description={seoDesc}
+        keywords={seoKeywords}
+        lang={currentLang}
+      />
+      <div className="pt-32 px-6 pb-24 min-h-screen bg-cream dark:bg-cream-dark transition-colors duration-500 animate-fade-in">
         <div className="max-w-7xl mx-auto">
           <header className="text-center mb-20">
-            <h1 className="font-serif text-5xl md:text-7xl text-charcoal-900 mb-6">Galerija</h1>
+            <h1 className="font-serif text-5xl md:text-7xl text-charcoal-900 dark:text-cream mb-6 transition-colors">{t.title}</h1>
             <Link 
               to={`/${currentLang}`}
-              className="inline-block text-xs font-bold uppercase tracking-widest border-b border-charcoal-900 pb-1 hover:text-taupe-600 hover:border-taupe-600 transition-colors"
+              className="inline-block text-xs font-bold uppercase tracking-widest border-b border-charcoal-900 dark:border-white/50 text-charcoal-900 dark:text-white/70 pb-1 hover:text-taupe-600 dark:hover:text-white hover:border-taupe-600 transition-colors"
             >
-              Atgriezties
+              {t.back}
             </Link>
           </header>
 
@@ -42,7 +66,7 @@ const Gallery: React.FC = () => {
               <div 
                 key={img.id}
                 onClick={() => openLightbox(index)}
-                className="aspect-[4/5] bg-stone rounded-2xl overflow-hidden group relative cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500"
+                className="aspect-[4/5] bg-stone dark:bg-stone-dark rounded-2xl overflow-hidden group relative cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500"
               >
                 <img 
                   src={img.src} 
@@ -52,7 +76,7 @@ const Gallery: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-charcoal-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <span className="bg-white/90 px-5 py-2 rounded-full text-charcoal-900 text-[10px] uppercase tracking-widest font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 backdrop-blur-sm">
-                    Apskatīt
+                    {t.view}
                   </span>
                 </div>
               </div>

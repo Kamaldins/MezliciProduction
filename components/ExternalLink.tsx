@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
-import { ExternalLink as ExternalLinkIcon, X, ArrowRight } from 'lucide-react';
-import clsx from 'clsx';
+import { ArrowRight, ArrowUpRight } from 'phosphor-react';
+import { useLocation } from 'react-router-dom';
 
 interface ExternalLinkProps {
   href: string;
   children: React.ReactNode;
   className?: string;
-  classNameLabel?: string;
 }
 
-const ExternalLink: React.FC<ExternalLinkProps> = ({ href, children, className, classNameLabel }) => {
+const ExternalLink: React.FC<ExternalLinkProps> = ({ href, children, className }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  
+  // Robust detection
+  const pathLang = location.pathname.split('/')[1];
+  const currentLang = (['en', 'ru'].includes(pathLang) ? pathLang : 'lv') as 'lv' | 'en' | 'ru';
+
+  const t = {
+    lv: { title: 'Ārēja saite', desc: 'Jūs tiekat novirzīts uz ārēju resursu.', cancel: 'Atcelt', continue: 'Turpināt' },
+    en: { title: 'External Link', desc: 'You are being redirected to an external source.', cancel: 'Cancel', continue: 'Continue' },
+    ru: { title: 'Внешняя ссылка', desc: 'Вы переходите на внешний ресурс.', cancel: 'Отмена', continue: 'Перейти' }
+  }[currentLang] || { title: 'External Link', desc: 'Redirecting to external source.', cancel: 'Cancel', continue: 'Continue' };
 
   const handleConfirm = () => {
     setIsOpen(false);
@@ -27,45 +37,40 @@ const ExternalLink: React.FC<ExternalLinkProps> = ({ href, children, className, 
         {children}
       </button>
 
-      {/* Modal Portal */}
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
           <div 
-            className="absolute inset-0 bg-charcoal-900/40 backdrop-blur-md animate-fade-in"
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm animate-fade-in transition-all duration-500"
             onClick={() => setIsOpen(false)}
           />
           
-          {/* Modal Content - Minimalist Design */}
-          <div className="relative bg-white rounded-2xl p-8 max-w-sm w-full shadow-2xl animate-slide-up border border-stone/50">
-            
-            <div className="flex flex-col items-start text-left">
-                <div className="flex items-center gap-3 mb-2 text-taupe-600">
-                    <ExternalLinkIcon size={20} />
-                    <span className="text-xs font-bold uppercase tracking-widest">Ārēja saite</span>
+          {/* Compact, professional modal - Updated dark bg to Stone Dark (Surface0) */}
+          <div className="relative bg-[#FDFCF8] dark:bg-stone-dark rounded-[2rem] p-8 max-w-[320px] w-full shadow-2xl animate-slide-up border border-white/10 ring-1 ring-black/5">
+            <div className="flex flex-col items-center text-center">
+                <div className="w-14 h-14 rounded-2xl bg-stone/50 dark:bg-white/5 flex items-center justify-center text-charcoal-900 dark:text-white mb-6">
+                    <ArrowUpRight size={28} weight="light" />
                 </div>
                 
-                <h3 className="font-serif text-2xl text-charcoal-900 mb-4 leading-tight">
-                    Jūs atstājat Mežlīčus
+                <h3 className="font-serif text-lg text-charcoal-900 dark:text-white mb-2 font-medium">
+                    {t.title}
                 </h3>
-                
-                <p className="text-charcoal-800/60 mb-8 font-sans text-sm leading-relaxed">
-                    Jūs tiekat novirzīts uz citu vietni. Mēs neesam atbildīgi par ārējo resursu saturu.
+                <p className="text-charcoal-800/60 dark:text-white/50 text-xs leading-relaxed mb-8 px-2 font-sans">
+                    {t.desc}
                 </p>
 
-                <div className="flex items-center gap-4 w-full">
-                    <button 
-                        onClick={() => setIsOpen(false)}
-                        className="flex-1 py-3 bg-stone/30 text-charcoal-900 rounded-lg font-bold text-xs hover:bg-stone/50 transition-colors"
-                    >
-                        Atcelt
-                    </button>
+                <div className="flex flex-col gap-3 w-full">
                     <button 
                         onClick={handleConfirm}
-                        className="flex-[2] py-3 bg-charcoal-900 text-white rounded-lg font-bold text-xs hover:bg-taupe-500 transition-colors shadow-lg flex items-center justify-center gap-2 group"
+                        className="w-full py-4 bg-charcoal-900 dark:bg-white text-white dark:text-charcoal-900 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2"
                     >
-                        Turpināt
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        {t.continue}
+                        <ArrowRight size={14} weight="bold" />
+                    </button>
+                    <button 
+                        onClick={() => setIsOpen(false)}
+                        className="w-full py-3 text-[10px] font-bold uppercase tracking-widest text-charcoal-900/40 dark:text-white/40 hover:text-charcoal-900 dark:hover:text-white transition-colors"
+                    >
+                        {t.cancel}
                     </button>
                 </div>
             </div>
