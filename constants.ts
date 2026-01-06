@@ -6,6 +6,7 @@ export const ADDRESS = "Ķeguma pagasts, Tome";
 // Updated Google Maps link with &t=h to force Hybrid (Satellite + Labels) view when opened
 export const MAPS_LINK = "https://www.google.com/maps/place/56%C2%B043'20.2%22N+24%C2%B043'26.0%22E/@56.7222882,24.7222041,310m/data=!3m1!1e3!4m4!3m3!8m2!3d56.722276!4d24.723883!5m1!1e4&t=h";
 export const WAZE_LINK = "https://waze.com/ul?ll=56.722276,24.723883&navigate=yes";
+export const APPLE_MAPS_LINK = "https://maps.apple.com/place?map=satellite&auid=15335768332464220734&address=Tomes+pag.%2C+LV-5020%2C+Latvia&coordinate=56.72231688210846%2C24.723812543411448&name=Marked+Location&lsp=7618";
 
 export const NAV_LINKS: NavLink[] = [
   { label: 'Sākums', path: '/' },
